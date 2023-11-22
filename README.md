@@ -32,7 +32,7 @@ This code:
 
   input3 := make([]int, len(input2))
   for i := range input2 {
-    input3[i] = input3[i] * 2
+    input3[i] = input2[i] * 2
   }
 
   for i := range input3 {
