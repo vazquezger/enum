@@ -10,15 +10,15 @@ import (
 )
 
 func TestFluent(t *testing.T) {
-	got := enum.
-		Of([]int{1, 2, 3, 4, 5, 6, 7, 9, 10}).
+	got, found := enum.
+		Of([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}).
 		Filter(func(it int) bool { return it%2 == 0 }).
 		Map(func(it int) int { return it * 2 }).
-		ToSlice()
+		Find(func(it int) bool { return it == 12 })
 
-	want := []int{4, 8, 12, 20}
-	if !reflect.DeepEqual(got, want) {
-		t.Errorf("want %v - got %v", want, got)
+	want := 12
+	if !found || want != *got {
+		t.Errorf("want %v - got %v", want, *got)
 	}
 }
 
