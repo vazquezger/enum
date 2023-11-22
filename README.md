@@ -23,30 +23,24 @@ This code:
 
   input := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
-  output := make([]int, 0)
+  input2 := make([]int, 0)
   for i := range input {
     if input[i] % 2 == 0 {
-      output = append(output, input[i]
+      input2 = append(input2, input[i])
     }
   }
 
-  for i := range input {
-    input[i] = input[i] * 2
+  input3 := make([]int, len(input2))
+  for i := range input2 {
+    input3[i] = input3[i] * 2
   }
 
-  ok := false
-  output := ""
-  for i := range output {
-    if output[i] == 12 {
-      ok = true
-      output = output[i]
-      break
+  for i := range input3 {
+    if input3[i] == 12 {
+       fmt.Println(12)
+       // 12
+       break
     }
-  }
-
-  if ok {
-    fmt.Println(output)
-    // 12
   }
   
 ```
