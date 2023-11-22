@@ -6,6 +6,23 @@ This code:
 ```
   input := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 
+  output, ok := enum.
+  		Of(input).
+  		Filter(func(it int) bool { return it%2 == 0 }).
+  		Map(func(it int) int { return it*2 }).
+  		Find(func(it int) bool { return it == 12 })
+
+  if ok {
+    fmt.Println(*output)
+    // 12
+  }
+```
+
+... is equivalent to this code:
+```
+
+  input := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
   output := make([]int, 0)
   for i := range input {
     if input[i] % 2 == 0 {
@@ -29,22 +46,6 @@ This code:
 
   if ok {
     fmt.Println(output)
-    // 12
-  }
-```
-
-... is equivalent to this code:
-```
-  input := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-
-  output, ok := enum.
-  		Of(input).
-  		Filter(func(it int) bool { return it%2 == 0 }).
-  		Map(func(it int) int { return it*2 }).
-  		Find(func(it int) bool { return it == 12 })
-
-  if ok {
-    fmt.Println(*output)
     // 12
   }
   
