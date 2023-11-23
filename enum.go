@@ -14,10 +14,10 @@ func (e enum[T]) ToSlice() []T {
 	return e.slice
 }
 
-// Slice drops elements before first (zero-base), then it tates elements until element last (inclusively).
+// Slice drops elements before first (zero-base), then it tates elements until element last (exclusively).
 func (e enum[T]) Slice(first, last int) enum[T] {
 	return enum[T]{
-		slice: e.slice[first : last+1],
+		slice: e.slice[first:last],
 	}
 }
 
